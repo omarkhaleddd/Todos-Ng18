@@ -1,0 +1,18 @@
+<div class="todo-container">
+    <input [(ngModel)]="newTodo" type="text" placeholder="Add a new todo" />
+    <button (click)="addTodo()">Add Todo</button>
+  
+    <div *ngIf="todos$ | async as todos; else noTodos">
+      <ul>
+        <li *ngFor="let todo of todos; trackBy: trackById">
+          <span>{{ todo.content }}</span>
+          <button class="remove" (click)="removeTodo(todo.id)">Remove</button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noTodos>
+      <p class="no-todos">No todos found.</p>
+    </ng-template>
+  
+ </div>
+  
